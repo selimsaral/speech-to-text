@@ -15,14 +15,7 @@ class SpeechToTextRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "file" => "required",
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            "audio_file.required" => "Ses Dosyası Yüklemelisiniz"
+            "file" => "required|mimes:mp3,waw,flac",
         ];
     }
 }
