@@ -25,6 +25,9 @@
 
 <main role="main">
     <section class="jumbotron text-center">
+        <p>
+            Demo Audio File: <a target="_blank" href="/demo.mp3">Download</a>
+        </p>
         <div class="container">
             <div id="dropzone">
                 <form action="/speech-to-text" id="myDropzone" class="dropzone"></form>
