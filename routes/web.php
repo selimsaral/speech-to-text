@@ -13,6 +13,6 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+$router->get('/', 'HomeController@index');
+
+$router->post('/speech-to-text', 'HomeController@speechToText');
