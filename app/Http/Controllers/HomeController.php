@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\SpeechToText;
-use App\Helpers\Google\SpeechToText as GoogleSpeechToText;
+use App\Jobs\SpeechToTextJob;
 use App\Requests\SpeechToTextRequest;
+use Illuminate\Http\JsonResponse;
 
 class HomeController extends Controller
 {
@@ -14,13 +14,9 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function speechToText(SpeechToTextRequest $request)
+    public function speechToText(SpeechToTextRequest $request): JsonResponse
     {
-        $GoogleSpeechToText = new GoogleSpeechToText();
-
-        $speechToText = (new SpeechToText($GoogleSpeechToText))->getService();
-
-        $result = $speechToText->setAudio($request->file)->recognize();
+        $result = dispatch_now(new SpeechToTextJob($request->file));
 
         return response()->json([
             'result' => $result,
