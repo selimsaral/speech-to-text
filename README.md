@@ -1,5 +1,6 @@
 # Framework
-Lumen
+Lumen 8.x
+PHP 7.4.3
 
 # Local Ortamda Projeyi Ayağa Kaldırma
 * composer install
